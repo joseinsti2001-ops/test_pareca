@@ -1,0 +1,18 @@
+/* Puedes dejarlo vacío o añadir estilos personalizados aquí */
+/* Ejemplo de animación sutil para las imágenes al cargar */
+.image-container img {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container img.loading {
+    opacity: 0.5;
+}
+
+.image-container img.loaded {
+    opacity: 1;
+}
+
+/* Estilo para las opciones de respuesta */
+.option-btn {
+    transition: background-color 0.2s ease;
+}

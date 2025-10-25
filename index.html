@@ -2,12 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test de Vehículos - Guía Pareca</title>
     <!-- TailwindCSS v3.4 CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- No necesitas el archivo CSS personalizado si usas solo Tailwind -->
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8 max-w-4xl">
@@ -17,11 +14,33 @@
         </header>
 
         <main>
-            <div id="quiz-container" class="bg-white rounded-xl shadow-md p-6 mb-6">
-                <!-- Aquí se cargará la pregunta dinámicamente -->
-            </div>
-            <div id="result-container" class="hidden bg-white rounded-xl shadow-md p-6 text-center">
-                <!-- Aquí se mostrará el resultado final -->
+            <!-- Ejemplo de pregunta -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                <div class="text-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Pregunta 1</h3>
+                    <p class="text-gray-600 mt-2"><strong>Descripción:</strong> Evacuador de gases al principio del cañón. Tren Christie.</p>
+                </div>
+                <div class="image-container text-center mb-6">
+                    <!-- Imagen genérica con enlace a la imagen real -->
+                    <img src="https://placehold.co/600x300?text=Haz+clic+para+ver+imagen" 
+                         alt="Imagen de T-55" 
+                         class="mx-auto rounded-lg shadow-md cursor-pointer" 
+                         onclick="abrirImagenEnPestaña('https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/T-55_Tank_Military_Parade_2013_%282%29.jpg/640px-T-55_Tank_Military_Parade_2013_%282%29.jpg')">
+                </div>
+                <div class="options">
+                    <button class="option-btn w-full mb-2 p-3 bg-blue-100 hover:bg-blue-200 text-left rounded-lg transition-colors duration-200">
+                        T-62
+                    </button>
+                    <button class="option-btn w-full mb-2 p-3 bg-blue-100 hover:bg-blue-200 text-left rounded-lg transition-colors duration-200">
+                        T-55
+                    </button>
+                    <button class="option-btn w-full mb-2 p-3 bg-blue-100 hover:bg-blue-200 text-left rounded-lg transition-colors duration-200">
+                        T-72B
+                    </button>
+                    <button class="option-btn w-full mb-2 p-3 bg-blue-100 hover:bg-blue-200 text-left rounded-lg transition-colors duration-200">
+                        M1 Abrams
+                    </button>
+                </div>
             </div>
         </main>
 
@@ -30,7 +49,12 @@
         </footer>
     </div>
 
-    <!-- Tu script principal -->
-    <script src="js/script.js"></script>
+    <script>
+        function abrirImagenEnPestaña(url) {
+            // Abrir la URL de la imagen directamente en una nueva pestaña
+            // Dejar que el navegador maneje el tamaño y visualización
+            window.open(url, '_blank'); 
+        }
+    </script>
 </body>
 </html>

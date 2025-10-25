@@ -551,21 +551,21 @@ function displayQuestion() {
             </button>
         `;
     });
-
     quizElement.innerHTML = `
-        <div class="text-center mb-6">
-            <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
-            <p class="text-gray-600 mt-2"><strong>Descripción:</strong> ${q.descripcion}</p>
-        </div>
-        <div class="image-container text-center mb-6">
-            <img src="${q.imagen}" alt="Imagen de ${q.respuesta}"
-                 class="mx-auto rounded-lg shadow-md loaded"
-                 onerror="this.onerror=null; this.src='https://placehold.co/600x300?text=Imagen+no+disponible'; this.alt='Imagen no disponible';">
-        </div>
-        <div class="options">
-            ${optionsHTML}
-        </div>
-    `;
+    <div class="text-center mb-6">
+        <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
+        <p class="text-gray-600 mt-2"><strong>Descripción:</strong> ${q.descripcion}</p>
+    </div>
+    <div class="image-container text-center mb-6">
+        <img src="${q.imagen}"
+             alt="Imagen de ${q.respuesta}"
+             class="mx-auto rounded-lg shadow-md loaded"
+             onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg=='; this.alt='Imagen no disponible';">
+    </div>
+    <div class="options">
+        ${optionsHTML}
+    </div>
+`;
 }
 
 function checkAnswer(selectedOption) {
@@ -627,4 +627,5 @@ function restartQuiz() {
 }
 
 // Mostrar la primera pregunta al cargar la página
+
 window.onload = displayQuestion;

@@ -1,4 +1,6 @@
 // script.js
+
+// --- Array de preguntas (con imágenes reales para usar en la función de abrir imagen) ---
 const preguntas = [
     {
         descripcion: "Evacuador de gases al principio del cañón. Tren Christie.",
@@ -522,6 +524,7 @@ const preguntas = [
         opciones: ["P-3 Orion", "C-130 Hercules", "E-3 Sentry", "A400M Atlas"],
         imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/E-3_Sentry_001.jpg/640px-E-3_Sentry_001.jpg"
     }
+    // Puedes añadir más aquí si quieres más vehículos del PDF
 ];
 
 let currentQuestion = 0;
@@ -544,54 +547,53 @@ function displayQuestion() {
 
     let optionsHTML = "";
     opcionesMezcladas.forEach(op => {
+        // Usamos un data-attribute para almacenar la opción y evitar problemas de comillas
         optionsHTML += `
             <button class="option-btn w-full mb-2 p-3 bg-blue-100 hover:bg-blue-200 text-left rounded-lg transition-colors duration-200"
-                    onclick="checkAnswer('${op}')">
+                    data-option="${op}"
+                    onclick="checkAnswer(this)">
                 ${op}
             </button>
         `;
     });
-    // ... dentro de displayQuestion ...
-quizElement.innerHTML = `
-    <div class="text-center mb-6">
-        <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
-        <p class="text-gray-600 mt-2"><strong>Descripción:</strong> ${q.descripcion}</p>
-    </div>
-    <div class="image-container text-center mb-6">
-        <!-- Imagen genérica que al hacer clic abre la real en otra pestaña, dejando que el navegador la muestre como imagen -->
-        <img src="https://placehold.co/600x300?text=Haz+clic+para+ver+imagen" 
-             alt="Imagen de ${q.respuesta}" 
-             class="mx-auto rounded-lg shadow-md cursor-pointer"
-             onclick="abrirImagenEnPestaña('${q.imagen}')"> <!-- Usamos la URL original aquí -->
-    </div>
-    <div class="options">
-        ${optionsHTML}
-    </div>
-`;
 
-// Función para abrir la imagen real en una nueva pestaña
-function abrirImagenEnPestaña(url) {
-    // Abrir la URL de la imagen directamente en una nueva pestaña
-    // Dejar que el navegador maneje el tamaño y visualización
-    window.open(url, '_blank'); 
+    // Imagen genérica que al hacer clic abre la real en otra pestaña
+    quizElement.innerHTML = `
+        <div class="text-center mb-6">
+            <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
+            <p class="text-gray-600 mt-2"><strong>Descripción:</strong> ${q.descripcion}</p>
+        </div>
+        <div class="image-container text-center mb-6">
+            <img src="https://placehold.co/600x300?text=Haz+clic+para+ver+imagen" 
+                 alt="Imagen de ${q.respuesta}" 
+                 class="mx-auto rounded-lg shadow-md cursor-pointer"
+                 onclick="abrirImagenEnPestaña('${q.imagen}')"> <!-- Usamos la URL original aquí -->
+        </div>
+        <div class="options">
+            ${optionsHTML}
+        </div>
+    `;
 }
 
-
-function checkAnswer(selectedOption) {
+// Función para manejar la respuesta seleccionada
+function checkAnswer(buttonElement) {
+    const selectedOption = buttonElement.getAttribute("data-option");
     const q = preguntas[currentQuestion];
-    const buttons = document.querySelectorAll('.option-btn');
     const isCorrect = selectedOption === q.respuesta;
 
-    buttons.forEach(button => {
-        button.disabled = true; // Deshabilitar botones después de responder
-        if (button.textContent.trim() === q.respuesta) {
-            button.classList.remove('bg-blue-100', 'hover:bg-blue-200');
-            button.classList.add('bg-green-100', 'text-green-800');
-        }
-        if (isCorrect && button.textContent.trim() === selectedOption) {
-            button.classList.add('bg-green-500', 'text-white');
-        } else if (!isCorrect && button.textContent.trim() === selectedOption) {
-            button.classList.add('bg-red-500', 'text-white');
+    // Deshabilitar todos los botones después de responder
+    const allButtons = document.querySelectorAll('.option-btn');
+    allButtons.forEach(btn => {
+        btn.disabled = true;
+        const optionText = btn.getAttribute("data-option");
+        if (optionText === q.respuesta) {
+            // Marcar la respuesta correcta
+            btn.classList.remove('bg-blue-100', 'hover:bg-blue-200');
+            btn.classList.add('bg-green-100', 'text-green-800');
+        } else if (optionText === selectedOption && !isCorrect) {
+            // Marcar la respuesta incorrecta seleccionada
+            btn.classList.remove('bg-blue-100', 'hover:bg-blue-200');
+            btn.classList.add('bg-red-100', 'text-red-800');
         }
     });
 
@@ -608,6 +610,13 @@ function checkAnswer(selectedOption) {
             showResults();
         }
     }, 1500); // 1.5 segundos antes de avanzar
+}
+
+// Función para abrir la imagen real en una nueva pestaña
+function abrirImagenEnPestaña(url) {
+    // Abrir la URL de la imagen directamente en una nueva pestaña
+    // Dejar que el navegador maneje el tamaño y visualización
+    window.open(url, '_blank');
 }
 
 function showResults() {
@@ -636,6 +645,10 @@ function restartQuiz() {
 }
 
 // Mostrar la primera pregunta al cargar la página
+window.onload = displayQuestion;
+
+// Mostrar la primera pregunta al cargar la página
 
 window.onload = displayQuestion;
+
 

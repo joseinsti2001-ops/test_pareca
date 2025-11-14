@@ -12,25 +12,26 @@
 <body class="bg-gray-100">
 
     <!-- Sección de Portada -->
-    <div id="cover-page" class="flex flex-col items-center justify-between min-h-screen bg-red-900 bg-opacity-90 bg-[url('imagenes/fondo_textura_roja.jpg')] bg-cover bg-center p-4">
+    <div id="cover-page" class="flex flex-col items-center justify-between min-h-screen bg-red-800 bg-opacity-90 p-4"> <!-- Fondo rojo más sutil -->
+
         <!-- Parte superior vacía -->
         <div></div>
 
         <!-- Contenido central -->
-        <div class="text-center bg-black bg-opacity-60 p-8 rounded-2xl shadow-2xl max-w-3xl mx-auto border-4 border-yellow-600">
-            <div class="mb-6">
+        <div class="text-center bg-white bg-opacity-80 p-6 rounded-xl shadow-lg max-w-2xl mx-auto border-2 border-gray-700"> <!-- Fondo blanco más sutil -->
+            <div class="mb-4">
                 <!-- Emblema de LA LEGIÓN ESPAÑOLA (PNG con transparencia) -->
-                <img src="imagenes/emblema_legion.png" alt="Emblema de LA LEGIÓN ESPAÑOLA" class="mx-auto h-64 w-auto object-contain drop-shadow-[0_0_8px_rgba(255,215,0,0.8)] filter brightness-110"> <!-- Aumentado a h-64 -->
+                <img src="imagenes/emblema_legion.png" alt="Emblema de LA LEGIÓN ESPAÑOLA" class="mx-auto h-64 w-auto object-contain"> <!-- Emblema más grande -->
             </div>
-            <h1 class="text-4xl md:text-5xl font-bold text-yellow-400 mb-4 tracking-wide">GRUPO DE CABALLERÍA "REYES CATÓLICOS" II DE LA LEGIÓN</h1> <!-- Unidad como título principal -->
-            <p class="text-xl md:text-2xl text-white mb-8 font-medium tracking-wide">Identifica vehículos militares por su descripción y apariencia. ¡Acierta todos!</p> <!-- Descripción -->
-            <button id="start-button" class="mt-4 px-10 py-5 bg-yellow-600 text-black font-extrabold text-2xl rounded-xl hover:bg-yellow-500 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-yellow-600/50 border-2 border-yellow-700">
-                ¡COMENZAR TEST!
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">GRUPO DE CABALLERÍA "REYES CATÓLICOS" II DE LA LEGIÓN</h1> <!-- Unidad en negro -->
+            <!-- QUITADO: <p class="text-xl md:text-2xl text-white mb-8 font-medium tracking-wide">Identifica vehículos militares por su descripción y apariencia. ¡Acierta todos!</p> -->
+            <button id="start-button" class="mt-2 px-8 py-4 bg-red-700 text-white font-bold text-xl rounded-lg hover:bg-red-800 transition-all duration-300 transform hover:scale-105 shadow-md border border-gray-800"> <!-- Botón más sobrio -->
+                COMENZAR TEST
             </button>
         </div>
 
         <!-- Pie de la portada -->
-        <footer class="mt-8 text-center text-gray-300 text-sm">
+        <footer class="mt-6 text-center text-gray-600 text-sm">
             <p>Autor: TTE. JOSE REVERT TORMO</p>
         </footer>
     </div>
@@ -40,7 +41,7 @@
         <div class="container mx-auto px-4 py-8 max-w-4xl">
             <header class="text-center mb-8">
                 <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Test de Vehículos - Guía Pareca</h1>
-                <p class="text-gray-600 mt-2">Identifica vehículos militares por su descripción y apariencia. ¡Acierta todos!</p>
+                <!-- QUITADO: <p class="text-gray-600 mt-2">Identifica vehículos militares por su descripción y apariencia. ¡Acierta todos!</p> -->
             </header>
 
             <main>

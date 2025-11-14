@@ -590,7 +590,7 @@ function displayQuestion() {
             <img src="${q.imagen}"
                  alt="Imagen de ${q.respuesta}"
                  class="mx-auto rounded-lg shadow-md cursor-pointer loaded"
-                 onclick="abrirImagenEnPestaña('${q.imagen}')"
+                 onclick="abrirImagenEnModal('${q.imagen}')"
                  onerror="this.onerror=null; this.src='imagenes/imagen_no_disponible.jpg'; this.alt='Imagen no disponible'; this.classList.add('opacity-50');">
         </div>
         <div class="options">
@@ -635,8 +635,59 @@ function checkAnswer(buttonElement) {
     }, 1500);
 }
 
-function abrirImagenEnPestaña(url) {
-    window.open(url, '_blank');
+// Función para mostrar la imagen en grande en una modal
+function abrirImagenEnModal(url) {
+    // Crear o usar un contenedor modal
+    let modal = document.getElementById('imagen-modal');
+    if (!modal) {
+        // Si no existe la modal, créala
+        modal = document.createElement('div');
+        modal.id = 'imagen-modal';
+        modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden';
+        modal.style.zIndex = '1000';
+
+        // Contenido de la modal
+        const contenido = document.createElement('div');
+        contenido.className = 'relative max-w-4xl max-h-4xl p-4 bg-white rounded-lg shadow-xl';
+
+        // Imagen
+        const img = document.createElement('img');
+        img.id = 'imagen-modal-src';
+        img.className = 'max-w-full max-h-full object-contain';
+
+        // Botón de cierre
+        const botonCerrar = document.createElement('button');
+        botonCerrar.type = 'button';
+        botonCerrar.className = 'absolute top-2 right-2 bg-red-600 text-white rounded-full p-2 hover:bg-red-700 focus:outline-none';
+        botonCerrar.innerHTML = '&times;'; // Símbolo de X
+        botonCerrar.onclick = function() {
+            modal.classList.add('hidden');
+        };
+
+        // Botón para volver a la pregunta
+        const botonVolver = document.createElement('button');
+        botonVolver.type = 'button';
+        botonVolver.className = 'mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none';
+        botonVolver.textContent = 'Volver a la pregunta';
+        botonVolver.onclick = function() {
+            modal.classList.add('hidden');
+        };
+
+        contenido.appendChild(img);
+        contenido.appendChild(botonCerrar);
+        contenido.appendChild(botonVolver);
+        modal.appendChild(contenido);
+
+        // Añadir la modal al body
+        document.body.appendChild(modal);
+    }
+
+    // Actualizar la fuente de la imagen en la modal
+    const imgModal = document.getElementById('imagen-modal-src');
+    imgModal.src = url;
+
+    // Mostrar la modal
+    modal.classList.remove('hidden');
 }
 
 function showResults() {
@@ -669,6 +720,7 @@ let currentQuestion = 0;
 let score = 0;
 
 // --- FIN DEL SCRIPT ---
+
 
 
 

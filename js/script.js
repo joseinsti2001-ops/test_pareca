@@ -1,5 +1,40 @@
 // script.js
 
+// --- Función para mezclar un array aleatoriamente (algoritmo de Fisher-Yates) ---
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Intercambiamos elementos
+    }
+}
+
+// --- Array de preguntas (con imágenes locales) ---
+// (Aquí va tu array 'const preguntas = [...]')
+// [Pega aquí tu array 'preguntas' completo]
+
+// --- Código para manejar la portada y el inicio del quiz ---
+document.addEventListener('DOMContentLoaded', function () {
+    const coverPage = document.getElementById('cover-page');
+    const quizSection = document.getElementById('quiz-section');
+    const startButton = document.getElementById('start-button');
+
+    // Evento para el botón de inicio
+    startButton.addEventListener('click', function () {
+        coverPage.classList.add('hidden'); // Oculta la portada
+        quizSection.classList.remove('hidden'); // Muestra la sección del quiz
+
+        // MEZCLA EL ARRAY DE PREGUNTAS ALEATORIAMENTE ANTES DE EMPEZAR
+        shuffleArray(preguntas);
+
+        // Asegúrate de que la primera pregunta se cargue después de mostrar la sección
+        displayQuestion(); // Llama a la función que ya tienes para mostrar la primera pregunta
+    });
+
+    // IMPORTANTE: Comenta o elimina la línea que inicia el quiz inmediatamente
+    // window.onload = displayQuestion; // <-- COMENTA ESTA LINEA si la tienes
+});
+
+
 // --- Array de preguntas (con imágenes locales) ---
 const preguntas = [
     {
@@ -644,6 +679,7 @@ function restartQuiz() {
 
 // Mostrar la primera pregunta al cargar la página
 window.onload = displayQuestion;
+
 
 
 

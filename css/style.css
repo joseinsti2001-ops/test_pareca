@@ -5,6 +5,15 @@ body {
     background-color: #f0f9ff; /* Fondo azul claro */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+/* Estilo para la modal de imagen */
+#imagen-modal img {
+    display: block;
+    margin: 0 auto;
+}
+
+#imagen-modal button {
+    transition: background-color 0.3s ease;
+}
 
 /* Estilo para las opciones de respuesta */
 .option-btn {
@@ -44,3 +53,4 @@ body {
 .result-btn:hover {
     background-color: #2563eb; /* Hover más oscuro */
 }
+

@@ -1,18 +1,46 @@
 /* Puedes dejarlo vacío o añadir estilos personalizados aquí */
-/* Ejemplo de animación sutil para las imágenes al cargar */
-.image-container img {
-    transition: opacity 0.3s ease-in-out;
-}
 
-.image-container img.loading {
-    opacity: 0.5;
-}
-
-.image-container img.loaded {
-    opacity: 1;
+/* Estilo general para mejorar la apariencia */
+body {
+    background-color: #f0f9ff; /* Fondo azul claro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Estilo para las opciones de respuesta */
 .option-btn {
-    transition: background-color 0.2s ease;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para la imagen */
+.image-container img {
+    max-height: 300px; /* Limitar altura */
+    width: auto;
+    object-fit: contain; /* Mantener proporción */
+    border: 2px solid #e2e8f0; /* Borde suave */
+    transition: all 0.3s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.02); /* Efecto de zoom sutil al pasar el ratón */
+    border-color: #3b82f6; /* Borde azul al hacer hover */
+}
+
+/* Clase para imagen no disponible */
+.opacity-50 {
+    opacity: 0.5; /* Hacer la imagen de fallback más tenue */
+}
+
+/* Estilo para los botones de resultado */
+.result-btn {
+    transition: background-color 0.3s ease;
+}
+
+.result-btn:hover {
+    background-color: #2563eb; /* Hover más oscuro */
 }

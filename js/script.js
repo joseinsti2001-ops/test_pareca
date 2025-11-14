@@ -56,7 +56,7 @@ const preguntas = [
         descripcion: "Ojos del T-90. Blindaje de torre puesto matizado. Escape lado izquierdo.",
         respuesta: "T-90A",
         opciones: ["T-90M", "T-90A", "T-80U", "T-14 Armata"],
-        imagen: "imagenes/T-90A.jpg" // Ruta local
+        imagen: "imagenes/T90-A.jpg" // Ruta local
     },
     {
         descripcion: "ERA Relikt muy plana. 'Rejilla' (puede o no llevarla). Lanza fumígenos. Faldones muy tochos. Torre recta (sin platillo volante).",
@@ -278,7 +278,7 @@ const preguntas = [
         descripcion: "Mazacote grande detrás del cañón. Espacio 'vacío'. 3 ejes.",
         respuesta: "Archer FH77BW L52",
         opciones: ["M777", "Panzeraubitz 2000", "Archer FH77BW L52", "M109"],
-        imagen: "imagenes/ARCHER-FH77BW-L52.jpg" // Ruta local
+        imagen: "imagenes/ARCHER.jpg" // Ruta local
     },
     {
         descripcion: "2 ejes bajo la pieza. Tubo muy largo.",
@@ -669,6 +669,7 @@ let currentQuestion = 0;
 let score = 0;
 
 // --- FIN DEL SCRIPT ---
+
 
 
 

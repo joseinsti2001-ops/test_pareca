@@ -9,33 +9,6 @@ function shuffleArray(array) {
 }
 
 // --- Array de preguntas (con imágenes locales) ---
-// (Aquí va tu array 'const preguntas = [...]')
-// [Pega aquí tu array 'preguntas' completo]
-
-// --- Código para manejar la portada y el inicio del quiz ---
-document.addEventListener('DOMContentLoaded', function () {
-    const coverPage = document.getElementById('cover-page');
-    const quizSection = document.getElementById('quiz-section');
-    const startButton = document.getElementById('start-button');
-
-    // Evento para el botón de inicio
-    startButton.addEventListener('click', function () {
-        coverPage.classList.add('hidden'); // Oculta la portada
-        quizSection.classList.remove('hidden'); // Muestra la sección del quiz
-
-        // MEZCLA EL ARRAY DE PREGUNTAS ALEATORIAMENTE ANTES DE EMPEZAR
-        shuffleArray(preguntas);
-
-        // Asegúrate de que la primera pregunta se cargue después de mostrar la sección
-        displayQuestion(); // Llama a la función que ya tienes para mostrar la primera pregunta
-    });
-
-    // IMPORTANTE: Comenta o elimina la línea que inicia el quiz inmediatamente
-    // window.onload = displayQuestion; // <-- COMENTA ESTA LINEA si la tienes
-});
-
-
-// --- Array de preguntas (con imágenes locales) ---
 const preguntas = [
     {
         descripcion: "Evacuador de gases al principio del cañón. Tren Christie.",
@@ -562,16 +535,32 @@ const preguntas = [
     // Añade más entradas aquí si tienes más imágenes descargadas
 ];
 
-let currentQuestion = 0;
-let score = 0;
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
+// --- Código para manejar la portada y el inicio del quiz ---
+document.addEventListener('DOMContentLoaded', function () {
+    const coverPage = document.getElementById('cover-page');
+    const quizSection = document.getElementById('quiz-section');
+    const startButton = document.getElementById('start-button');
 
+    // Evento para el botón de inicio
+    startButton.addEventListener('click', function () {
+        console.log("Botón 'Comenzar' pulsado"); // Mensaje de depuración
+        coverPage.classList.add('hidden'); // Oculta la portada
+        quizSection.classList.remove('hidden'); // Muestra la sección del quiz
+
+        // MEZCLA EL ARRAY DE PREGUNTAS ALEATORIAMENTE ANTES DE EMPEZAR
+        shuffleArray(preguntas);
+        console.log("Preguntas mezcladas:", preguntas); // Mensaje de depuración
+
+        // Asegúrate de que la primera pregunta se cargue después de mostrar la sección
+        displayQuestion(); // Llama a la función que ya tienes para mostrar la primera pregunta
+    });
+
+    // IMPORTANTE: Comenta o elimina la línea que inicia el quiz inmediatamente
+    // window.onload = displayQuestion; // <-- COMENTA ESTA LINEA si la tienes
+});
+
+// --- Funciones del Quiz ---
 function displayQuestion() {
     const quizElement = document.getElementById("quiz-container");
     const q = preguntas[currentQuestion];
@@ -591,7 +580,7 @@ function displayQuestion() {
         `;
     });
 
-    // HTML generado con imagen local y fallback visual si falla
+    // Imagen genérica que al hacer clic abre la real en otra pestaña
     quizElement.innerHTML = `
         <div class="text-center mb-6">
             <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
@@ -610,7 +599,6 @@ function displayQuestion() {
     `;
 }
 
-// Función para manejar la respuesta seleccionada
 function checkAnswer(buttonElement) {
     const selectedOption = buttonElement.getAttribute("data-option");
     const q = preguntas[currentQuestion];
@@ -647,7 +635,6 @@ function checkAnswer(buttonElement) {
     }, 1500);
 }
 
-// Función para abrir la imagen real en una nueva pestaña
 function abrirImagenEnPestaña(url) {
     window.open(url, '_blank');
 }
@@ -677,8 +664,11 @@ function restartQuiz() {
     displayQuestion();
 }
 
-// Mostrar la primera pregunta al cargar la página
-window.onload = displayQuestion;
+// Variables globales
+let currentQuestion = 0;
+let score = 0;
+
+// --- FIN DEL SCRIPT ---
 
 
 

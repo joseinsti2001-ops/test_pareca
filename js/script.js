@@ -12,7 +12,7 @@ const preguntas = [
         descripcion: "Evacuador de gases a mitad del cañón. Torre redondea. Tren Christie.",
         respuesta: "T-62",
         opciones: ["T-55", "T-62", "T-80U", "Leopard 1"],
-        imagen: "imagenes/T-62.jpg" // Ruta local
+        imagen: "imagenes/T-62.png" // Ruta local
     },
     {
         descripcion: "Recubierto de cubitos. Faro al lado contrario. Cara torre con forma de esquina. Ruedas de tapacubos.",
@@ -36,7 +36,7 @@ const preguntas = [
         descripcion: "Faldones ligeros. Ruedas margarita. Una harta de lanza fumígenos.",
         respuesta: "T-72B3",
         opciones: ["T-72B", "T-64BV", "T-72B3", "PT-91"],
-        imagen: "imagenes/T-72B3.jpg" // Ruta local
+        imagen: "imagenes/T-72B3.png" // Ruta local
     },
     {
         descripcion: "Lanza-fumígenos 2+4. Ruedas margarita. 3 placas de blindaje.",
@@ -84,7 +84,7 @@ const preguntas = [
         descripcion: "Caja con lo de apuntar. Extintores. Peri del jefe.",
         respuesta: "AMX-56 Leclerc",
         opciones: ["AMX-30", "Leopard 2", "AMX-56 Leclerc", "Challenger 2"],
-        imagen: "imagenes/AMX-56-LECLERC.jpg" // Ruta local
+        imagen: "imagenes/AMX-56-LECLERC.png" // Ruta local
     },
     {
         descripcion: "Lanza fumígenos en ramo. 'Radiador'. MG 3.",
@@ -114,7 +114,7 @@ const preguntas = [
         descripcion: "Peri atrasado. Barcaza reforzada. Cámara conductor. Faros cuadrados.",
         respuesta: "Leopard 2A6",
         opciones: ["Leopard 2A4", "Leopard 2A5", "Leopard 2A6", "Leopard 2A7"],
-        imagen: "imagenes/LEOPARD-2A6.jpg" // Ruta local
+        imagen: "imagenes/LEOPARD-2A6.AVIF" // Ruta local
     },
     {
         descripcion: "Cañón 73mm corto. 5 ruedas tren rodaje. Barcaza con forma de barco. Torre adelantada.",
@@ -144,7 +144,7 @@ const preguntas = [
         descripcion: "Faldón ligero circular. Cañón 30mm. 6 ruedas tren rodaje.",
         respuesta: "BMP-2",
         opciones: ["BMP-1", "BMP-3", "BMD-2", "BMP-2"],
-        imagen: "imagenes/BMP-2.jpg" // Ruta local
+        imagen: "imagenes/BMP-2.png" // Ruta local
     },
     {
         descripcion: "Doble cañón. 3+3 lanza fumígenos. Faros muy juntos. 6 Ruedas lisas dobles.",
@@ -156,7 +156,7 @@ const preguntas = [
         descripcion: "Cañón 30mm con forma de 'porra'.",
         respuesta: "BMP-T",
         opciones: ["BMP-3", "BTR-82A", "BMP-T", "BRDM-2"],
-        imagen: "imagenes/BMP-T.jpg" // Ruta local
+        imagen: "imagenes/BMP-T.jpeg" // Ruta local
     },
     {
         descripcion: "Rampa de vadeo. Pequeña torre. 4 ruedas.",
@@ -210,7 +210,7 @@ const preguntas = [
         descripcion: "Cantidad tremenda de ERA. Afuste con escudo.",
         respuesta: "GTK Boxer",
         opciones: ["Fuchs", "Namer", "GTK Boxer", "Patria AMV"],
-        imagen: "imagenes/GTK-BOXER.jpg" // Ruta local
+        imagen: "imagenes/GTK-BOXER.webp" // Ruta local
     },
     {
         descripcion: "Chasis T-80 con motor T-72. Torre mas central que otras ATPs. Frenos de recuperación. Torre muy grande.",
@@ -222,7 +222,7 @@ const preguntas = [
         descripcion: "Frenos de recuperación escondidos. Tren de rodaje del T-90.",
         respuesta: "2S35 Koalitsaya",
         opciones: ["2S19 MSTA", "2S3 Akatsiya", "2S35 Koalitsaya", "Palmaria 155mm"],
-        imagen: "imagenes/2S35-KOALITSAYA.jpg" // Ruta local
+        imagen: "imagenes/2S35-KOALITSAYA.webp" // Ruta local
     },
     {
         descripcion: "Torre mas chafada. Chasis forma de barco. Tren de rodaje christie.",
@@ -252,7 +252,7 @@ const preguntas = [
         descripcion: "Faros en frente del chasis. Freno de boca sencillo. Peri del jefe. Frente de torre circular.",
         respuesta: "M109",
         opciones: ["2S1 Gvozdika", "FH 70", "M109", "M777"],
-        imagen: "imagenes/M109.jpg" // Ruta local
+        imagen: "imagenes/M109.webp" // Ruta local
     },
     {
         descripcion: "Sistema de carga. Cofres de almacenaje. Cureña. Trinca.",
@@ -264,7 +264,7 @@ const preguntas = [
         descripcion: "Luces sobre el glacis. Base del cañón 'solid'. Peri.",
         respuesta: "Panzeraubitz 2000",
         opciones: ["M109", "Caesar", "Panzeraubitz 2000", "M777"],
-        imagen: "imagenes/PANZERAUBITZE-2000.jpg" // Ruta local
+        imagen: "imagenes/PANZERAUBITZE-2000.webn" // Ruta local
     },
     {
         descripcion: "Mazacote grande detrás del cañón. Espacio 'vacío'. 3 ejes.",
@@ -288,7 +288,7 @@ const preguntas = [
         descripcion: "Tubos muy muy largos. Cuatro ruedas distribuidas de forma uniforme. Cabina del conductor solo en un lado.",
         respuesta: "BM-30 Smerch",
         opciones: ["BM-21 Grad", "TOS-1", "BM-30 Smerch", "HIMARS"],
-        imagen: "imagenes/BM-30-SMERCH.jpg" // Ruta local
+        imagen: "imagenes/BM-30-SMERCH.webp" // Ruta local
     },
     {
         descripcion: "Cohetes metidos en 'caja'. Camión con morro. Lanzacohetes sobre eje trasero.",
@@ -318,7 +318,7 @@ const preguntas = [
         descripcion: "Remolque con 2 ruedas. 3 misiles en 1+2. 3 misiles en 1+2.",
         respuesta: "Hawk",
         opciones: ["Patriot", "S-400", "Hawk", "9K37 Buk"],
-        imagen: "imagenes/HAWK.jpg" // Ruta local
+        imagen: "imagenes/HAWK.jpeg" // Ruta local
     },
     {
         descripcion: "Paquete de misiles en forma de caja. 'Cúpula' de radar enorme. Camión puede cambiar.",
@@ -348,7 +348,7 @@ const preguntas = [
         descripcion: "Cabina con forma de invernadero. Ruedas. 2 Motores.",
         respuesta: "Mi-8/17 Hip",
         opciones: ["Mi-24 Hind", "Mi-26 Halo", "Mi-8/17 Hip", "Ka-52 Alligator"],
-        imagen: "imagenes/MI-8-17-HIP.jpg" // Ruta local
+        imagen: "imagenes/MI-8-17-HIP.png" // Ruta local
     },
     {
         descripcion: "Cabina separada con forma de burbuja. Soporte para armamento. 2 Motores. Chasis muy voluminoso.",
@@ -444,7 +444,7 @@ const preguntas = [
         descripcion: "Forma de pingüino nadando. Motores en los laterales.",
         respuesta: "Tu-22M3",
         opciones: ["Tu-160", "Tu-22M3", "An-22", "An-26"],
-        imagen: "imagenes/TU-22M3.jpg" // Ruta local
+        imagen: "imagenes/TU-22M3.webp" // Ruta local
     },
     {
         descripcion: "'Cicatrices' y pintura plateada.",
@@ -644,5 +644,6 @@ function restartQuiz() {
 
 // Mostrar la primera pregunta al cargar la página
 window.onload = displayQuestion;
+
 
 

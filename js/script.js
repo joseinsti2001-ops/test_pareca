@@ -1,6 +1,6 @@
 // script.js
 
-// --- Función para mezclar un array aleatoriamente (algoritmo de Fisher-Yates) ---
+// --- Función para mezclar un array aleatoriamente (algoritmo de Fisher-Yates) --- 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -669,6 +669,7 @@ let currentQuestion = 0;
 let score = 0;
 
 // --- FIN DEL SCRIPT ---
+
 
 
 

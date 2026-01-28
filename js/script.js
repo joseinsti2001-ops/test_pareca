@@ -588,7 +588,6 @@ function displayQuestion() {
     const quizElement = document.getElementById("quiz-container");
     const q = preguntas[currentQuestion];
 
-    // Mezcla las opciones
     const opcionesMezcladas = [...q.opciones];
     shuffleArray(opcionesMezcladas);
 
@@ -603,6 +602,7 @@ function displayQuestion() {
         `;
     });
 
+    // RENDERIZAR TODO JUNTO (pregunta + contador)
     quizElement.innerHTML = `
         <div class="text-center mb-6">
             <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
@@ -611,7 +611,7 @@ function displayQuestion() {
         <div class="image-container text-center mb-6">
             <img src="${q.imagen}"
                  alt="Imagen de ${q.respuesta}"
-                 class="mx-auto rounded-lg shadow-md cursor-pointer loaded"
+                 class="mx-auto rounded-lg shadow-md cursor-pointer max-w-full h-auto"
                  onclick="abrirImagenEnModal('${q.imagen}')"
                  onerror="this.onerror=null; this.src='imagenes/imagen_no_disponible.jpg'; this.alt='Imagen no disponible'; this.classList.add('opacity-50');">
         </div>
@@ -619,23 +619,23 @@ function displayQuestion() {
             ${optionsHTML}
         </div>
         
-        <!-- BARRA DE PROGRESO -->
-        <div id="progress-section" class="w-full pt-4 border-t border-gray-200">
+        <!-- BARRA DE PROGRESO (solo aparece cuando hay preguntas) -->
+        <div class="pt-4 border-t border-gray-200 mt-4">
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm font-medium text-gray-700">
-                    <span id="progress-count">0</span>/<span id="total-count">${preguntas.length}</span> preguntas
+                    <span id="progress-count">${currentQuestion}</span>/${preguntas.length} preguntas
                 </span>
                 <span class="text-sm font-medium text-gray-700">
-                    <span class="text-green-600 font-bold" id="correct-count">0</span> ✓ | 
-                    <span class="text-red-600 font-bold" id="incorrect-count">0</span> ✗
+                    <span class="text-green-600 font-bold" id="correct-count">${correctAnswers}</span> ✓ | 
+                    <span class="text-red-600 font-bold" id="incorrect-count">${incorrectAnswers}</span> ✗
                 </span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
-                <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+                <div id="progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: ${Math.round((currentQuestion / preguntas.length) * 100)}%"></div>
             </div>
         </div>
     `;
-    
+}
     // Actualizar progreso después de renderizar
     updateProgress();
 }
@@ -760,6 +760,7 @@ function restartQuiz() {
 }
 
 // --- FIN DEL SCRIPT ---
+
 
 
 

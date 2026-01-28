@@ -9,76 +9,61 @@
     <!-- Tus estilos personalizados -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-100"> <!-- Este es el fondo del resto del sitio -->
+<body class="bg-gray-100"> <!-- Fondo del resto del sitio -->
 
     <!-- Sección de Portada -->
-    <div id="cover-page" class="flex flex-col items-center justify-between min-h-screen bg-gray-800 bg-opacity-90 p-4"> <!-- FONDO GRIS OSCURO -->
+    <div id="cover-page" class="flex flex-col items-center justify-between min-h-screen bg-gray-800 bg-opacity-90 p-4">
         <!-- Parte superior vacía -->
         <div></div>
 
         <!-- Contenido central -->
         <div class="text-center bg-white bg-opacity-80 p-6 rounded-xl shadow-lg max-w-2xl mx-auto border-2 border-gray-700">
             <div class="mb-4">
-                <!-- Emblema de LA LEGIÓN ESPAÑOLA (PNG con transparencia) -->
+                <!-- Emblema de LA LEGIÓN ESPAÑOLA -->
                 <img src="imagenes/emblema_legion.png" alt="Emblema de LA LEGIÓN ESPAÑOLA" class="mx-auto h-64 w-auto object-contain">
             </div>
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">GRUPO DE CABALLERÍA "REYES CATÓLICOS" II DE LA LEGIÓN</h1> <!-- Puedes cambiar text-gray-800 por text-white o text-yellow-300 -->
-            <button id="start-button" class="mt-2 px-8 py-4 bg-blue-700 text-white font-bold text-xl rounded-lg hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md border border-gray-800"> <!-- Cambiado bg-red-700 por bg-blue-700 -->
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">GRUPO DE CABALLERÍA "REYES CATÓLICOS" II DE LA LEGIÓN</h1>
+            <button id="start-button" class="mt-2 px-8 py-4 bg-blue-700 text-white font-bold text-xl rounded-lg hover:bg-blue-800 transition-all duration-300 transform hover:scale-105 shadow-md border border-gray-800">
                 COMENZAR TEST
             </button>
         </div>
 
         <!-- Pie de la portada -->
-        <footer class="mt-6 text-center text-gray-300 text-sm"> <!-- Texto claro sobre fondo oscuro -->
+        <footer class="mt-6 text-center text-gray-300 text-sm">
             <p>Autor: TTE. JOSE REVERT TORMO</p>
         </footer>
     </div>
-        <!-- Barra de progreso y estadísticas -->
-   <div id="quiz-container" class="max-w-2xl mx-auto">
-    <!-- Aquí va el contenido de las preguntas -->
-    
-    <!-- BARRA DE PROGRESO AL FINAL -->
-    <div id="progress-section" class="w-full mt-6 pt-4 border-t border-gray-200">
-        <div class="flex justify-between items-center mb-2">
-            <span class="text-sm font-medium text-gray-700">
-                <span id="progress-count">0</span>/<span id="total-count">0</span> preguntas
-            </span>
-            <span class="text-sm font-medium text-gray-700">
-                <span class="text-green-600 font-bold" id="correct-count">0</span> ✓ | 
-                <span class="text-red-600 font-bold" id="incorrect-count">0</span> ✗
-            </span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-2">
-            <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
-        </div>
-    </div>
-</div>
-        <!-- Sección del Quiz (oculta inicialmente) -->
+
+    <!-- Sección del Quiz (oculta inicialmente) -->
     <div id="quiz-section" class="hidden">
-        <!-- Título arriba del todo, centrado -->
-        <div class="bg-blue-600 text-white py-3">
-            <h1 class="text-3xl md:text-4xl font-bold text-center">Test de Vehículos - Guía Pareca</h1>
+        <!-- BARRA SUPERIOR CON TÍTULO (arriba del todo) -->
+        <div class="bg-blue-600 text-white py-3 shadow-md">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h1 class="text-3xl font-bold text-center">Test de Vehículos - Guía Pareca</h1>
+            </div>
         </div>
         
-        <div class="container mx-auto px-4 py-8 max-w-4xl">
-            <div id="quiz-container" class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="container mx-auto px-4 py-6 max-w-4xl">
+            <div id="quiz-container" class="bg-white rounded-xl shadow-md p-6">
                 <!-- Aquí se cargará la pregunta dinámicamente -->
             </div>
-            <div id="result-container" class="hidden bg-white rounded-xl shadow-md p-6 text-center">
+            
+            <div id="result-container" class="hidden bg-white rounded-xl shadow-md p-6 text-center mt-6">
                 <!-- Aquí se mostrará el resultado final -->
             </div>
-    
+
             <footer class="mt-8 text-center text-gray-500 text-sm">
                 <p>Proyecto para GitHub Pages - Basado en la Guía Pareca.</p>
             </footer>
         </div>
     </div>
-</div>
 
     <!-- Tu script principal -->
     <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 

@@ -4,9 +4,39 @@
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Intercambiamos elementos 
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
+// Variables globales
+let currentQuestion = 0;
+let score = 0;
+let correctAnswers = 0;
+let incorrectAnswers = 0;
+
+// --- Array de preguntas (con imágenes locales) ---
+const preguntas = [
+    {
+        descripcion: "Evacuador de gases al principio del cañón. Tren Christie.",
+        respuesta: "T-55",
+        opciones: ["T-62", "T-55", "T-72B", "M1 Abrams"],
+        imagen: "imagenes/T-55.jpg"
+    },
+    {
+        descripcion: "Evacuador de gases a mitad del cañón. Torre redondea. Tren Christie.",
+        respuesta: "T-62",
+        opciones: ["T-55", "T-62", "T-80U", "Leopard 1"],
+        imagen: "imagenes/T-62.png"
+    },
+    // ... (todas tus preguntas de vehículos y drones) ...
+    {
+        descripcion: "Diseño furtivo con alas en delta. Motor a reacción. Sin cola vertical visible.",
+        respuesta: "S-70",
+        opciones: ["RQ-170 SENTINEL", "S-70", "X-47B", "RQ-180"],
+        imagen: "imagenes/S-70.jpg"
+    }
+];
+
 
 // --- Array de preguntas (con imágenes locales) ---
 const preguntas = [
@@ -656,20 +686,6 @@ const preguntas = [
 ];
 
 
-// --- Función para mezclar un array aleatoriamente (algoritmo de Fisher-Yates) --- 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-// Variables globales
-let currentQuestion = 0;
-let score = 0;
-let correctAnswers = 0;
-let incorrectAnswers = 0;
-
 // --- Función para actualizar la barra de progreso ---
 function updateProgress() {
     const totalCount = preguntas.length;
@@ -684,24 +700,6 @@ function updateProgress() {
     const progressBar = document.getElementById('progress-bar');
     progressBar.style.width = `${progressPercentage}%`;
 }
-
-// --- Código para manejar la portada y el inicio del quiz ---
-document.addEventListener('DOMContentLoaded', function () {
-    const coverPage = document.getElementById('cover-page');
-    const quizSection = document.getElementById('quiz-section');
-    const startButton = document.getElementById('start-button');
-
-    startButton.addEventListener('click', function () {
-        console.log("Botón 'Comenzar' pulsado");
-        coverPage.classList.add('hidden');
-        quizSection.classList.remove('hidden');
-
-        shuffleArray(preguntas);
-        console.log("Preguntas mezcladas:", preguntas);
-
-        displayQuestion();
-    });
-});
 
 // --- Funciones del Quiz ---
 function displayQuestion() {
@@ -722,7 +720,6 @@ function displayQuestion() {
         `;
     });
 
-    // RENDERIZAR TODO JUNTO (pregunta + contador)
     quizElement.innerHTML = `
         <div class="text-center mb-6">
             <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
@@ -739,7 +736,7 @@ function displayQuestion() {
             ${optionsHTML}
         </div>
         
-        <!-- BARRA DE PROGRESO (solo aparece cuando hay preguntas) -->
+        <!-- BARRA DE PROGRESO -->
         <div class="pt-4 border-t border-gray-200 mt-4">
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm font-medium text-gray-700">
@@ -755,8 +752,7 @@ function displayQuestion() {
             </div>
         </div>
     `;
-}
-    // Actualizar progreso después de renderizar
+    
     updateProgress();
 }
 
@@ -765,23 +761,19 @@ function checkAnswer(buttonElement) {
     const q = preguntas[currentQuestion];
     const isCorrect = selectedOption === q.respuesta;
 
-    // Deshabilitar todos los botones después de responder
     const allButtons = document.querySelectorAll('.option-btn');
     allButtons.forEach(btn => {
         btn.disabled = true;
         const optionText = btn.getAttribute("data-option");
         if (optionText === q.respuesta) {
-            // Marcar la respuesta correcta
             btn.classList.remove('bg-blue-100', 'hover:bg-blue-200');
             btn.classList.add('bg-green-100', 'text-green-800');
         } else if (optionText === selectedOption && !isCorrect) {
-            // Marcar la respuesta incorrecta seleccionada
             btn.classList.remove('bg-blue-100', 'hover:bg-blue-200');
             btn.classList.add('bg-red-100', 'text-red-800');
         }
     });
 
-    // ACTUALIZAR CONTADORES (SOLO UNA VEZ)
     if (isCorrect) {
         score++;
         correctAnswers++;
@@ -789,7 +781,6 @@ function checkAnswer(buttonElement) {
         incorrectAnswers++;
     }
 
-    // Esperar antes de pasar a la siguiente pregunta
     setTimeout(() => {
         currentQuestion++;
         if (currentQuestion < preguntas.length) {
@@ -800,7 +791,6 @@ function checkAnswer(buttonElement) {
     }, 1500);
 }
 
-// Función para mostrar la imagen en grande en una modal
 function abrirImagenEnModal(url) {
     let modal = document.getElementById('imagen-modal');
     if (!modal) {
@@ -879,7 +869,23 @@ function restartQuiz() {
     displayQuestion();
 }
 
-// --- FIN DEL SCRIPT ---
+// --- Código para manejar la portada y el inicio del quiz ---
+document.addEventListener('DOMContentLoaded', function () {
+    const coverPage = document.getElementById('cover-page');
+    const quizSection = document.getElementById('quiz-section');
+    const startButton = document.getElementById('start-button');
+
+    startButton.addEventListener('click', function () {
+        console.log("Botón 'Comenzar' pulsado");
+        coverPage.classList.add('hidden');
+        quizSection.classList.remove('hidden');
+
+        shuffleArray(preguntas);
+        console.log("Preguntas mezcladas:", preguntas);
+
+        displayQuestion();
+    });
+});
 
 
 

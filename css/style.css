@@ -54,3 +54,6 @@ body {
     background-color: #2563eb; /* Hover más oscuro */
 }
 
+.hidden {
+    display: none !important;
+}

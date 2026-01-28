@@ -536,37 +536,57 @@ const preguntas = [
 ];
 
 
+// --- Función para mezclar un array aleatoriamente (algoritmo de Fisher-Yates) --- 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// Variables globales
+let currentQuestion = 0;
+let score = 0;
+let correctAnswers = 0;
+let incorrectAnswers = 0;
+
+// --- Función para actualizar la barra de progreso ---
+function updateProgress() {
+    const totalCount = preguntas.length;
+    const progressCount = currentQuestion;
+    const progressPercentage = Math.round((progressCount / totalCount) * 100);
+    
+    document.getElementById('progress-count').textContent = progressCount;
+    document.getElementById('total-count').textContent = totalCount;
+    document.getElementById('correct-count').textContent = correctAnswers;
+    document.getElementById('incorrect-count').textContent = incorrectAnswers;
+    
+    const progressBar = document.getElementById('progress-bar');
+    progressBar.style.width = `${progressPercentage}%`;
+}
+
 // --- Código para manejar la portada y el inicio del quiz ---
 document.addEventListener('DOMContentLoaded', function () {
     const coverPage = document.getElementById('cover-page');
     const quizSection = document.getElementById('quiz-section');
     const startButton = document.getElementById('start-button');
 
-    // Evento para el botón de inicio
     startButton.addEventListener('click', function () {
-        console.log("Botón 'Comenzar' pulsado"); // Mensaje de depuración
-        coverPage.classList.add('hidden'); // Oculta la portada
-        quizSection.classList.remove('hidden'); // Muestra la sección del quiz
+        console.log("Botón 'Comenzar' pulsado");
+        coverPage.classList.add('hidden');
+        quizSection.classList.remove('hidden');
 
-        // MEZCLA EL ARRAY DE PREGUNTAS ALEATORIAMENTE ANTES DE EMPEZAR
         shuffleArray(preguntas);
-        console.log("Preguntas mezcladas:", preguntas); // Mensaje de depuración
+        console.log("Preguntas mezcladas:", preguntas);
 
-        // Asegúrate de que la primera pregunta se cargue después de mostrar la sección
-        displayQuestion(); // Llama a la función que ya tienes para mostrar la primera pregunta
+        displayQuestion();
     });
-
-    // IMPORTANTE: Comenta o elimina la línea que inicia el quiz inmediatamente
-    // window.onload = displayQuestion; // <-- COMENTA ESTA LINEA si la tienes
 });
 
 // --- Funciones del Quiz ---
 function displayQuestion() {
     const quizElement = document.getElementById("quiz-container");
     const q = preguntas[currentQuestion];
-
-    // Actualizar progreso
-    updateProgress();
 
     // Mezcla las opciones
     const opcionesMezcladas = [...q.opciones];
@@ -583,7 +603,6 @@ function displayQuestion() {
         `;
     });
 
-    // AÑADE LA BARRA DE PROGRESO AL FINAL, después de las opciones
     quizElement.innerHTML = `
         <div class="text-center mb-6">
             <h3 class="text-xl font-semibold text-gray-800">Pregunta ${currentQuestion + 1} de ${preguntas.length}</h3>
@@ -604,30 +623,28 @@ function displayQuestion() {
         <div id="progress-section" class="w-full pt-4 border-t border-gray-200">
             <div class="flex justify-between items-center mb-2">
                 <span class="text-sm font-medium text-gray-700">
-                    <span id="progress-count">${currentQuestion}</span>/<span id="total-count">${preguntas.length}</span> preguntas
+                    <span id="progress-count">0</span>/<span id="total-count">${preguntas.length}</span> preguntas
                 </span>
                 <span class="text-sm font-medium text-gray-700">
-                    <span class="text-green-600 font-bold" id="correct-count">${correctAnswers}</span> ✓ | 
-                    <span class="text-red-600 font-bold" id="incorrect-count">${incorrectAnswers}</span> ✗
+                    <span class="text-green-600 font-bold" id="correct-count">0</span> ✓ | 
+                    <span class="text-red-600 font-bold" id="incorrect-count">0</span> ✗
                 </span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
-                <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: ${Math.round((currentQuestion / preguntas.length) * 100)}%"></div>
+                <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
             </div>
         </div>
     `;
+    
+    // Actualizar progreso después de renderizar
+    updateProgress();
 }
 
 function checkAnswer(buttonElement) {
     const selectedOption = buttonElement.getAttribute("data-option");
     const q = preguntas[currentQuestion];
     const isCorrect = selectedOption === q.respuesta;
-     if (isCorrect) {
-        score++;
-        correctAnswers++;  // Nueva línea
-    } else {
-        incorrectAnswers++;  // Nueva línea
-    }
+
     // Deshabilitar todos los botones después de responder
     const allButtons = document.querySelectorAll('.option-btn');
     allButtons.forEach(btn => {
@@ -644,11 +661,15 @@ function checkAnswer(buttonElement) {
         }
     });
 
+    // ACTUALIZAR CONTADORES (SOLO UNA VEZ)
     if (isCorrect) {
         score++;
+        correctAnswers++;
+    } else {
+        incorrectAnswers++;
     }
 
-    // Esperar un momento antes de pasar a la siguiente pregunta
+    // Esperar antes de pasar a la siguiente pregunta
     setTimeout(() => {
         currentQuestion++;
         if (currentQuestion < preguntas.length) {
@@ -661,34 +682,28 @@ function checkAnswer(buttonElement) {
 
 // Función para mostrar la imagen en grande en una modal
 function abrirImagenEnModal(url) {
-    // Crear o usar un contenedor modal
     let modal = document.getElementById('imagen-modal');
     if (!modal) {
-        // Si no existe la modal, créala
         modal = document.createElement('div');
         modal.id = 'imagen-modal';
         modal.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden';
         modal.style.zIndex = '1000';
 
-        // Contenido de la modal
         const contenido = document.createElement('div');
         contenido.className = 'relative max-w-4xl max-h-4xl p-4 bg-white rounded-lg shadow-xl';
 
-        // Imagen
         const img = document.createElement('img');
         img.id = 'imagen-modal-src';
         img.className = 'max-w-full max-h-full object-contain';
 
-        // Botón de cierre
         const botonCerrar = document.createElement('button');
         botonCerrar.type = 'button';
         botonCerrar.className = 'absolute top-2 right-2 bg-red-600 text-white rounded-full p-2 hover:bg-red-700 focus:outline-none';
-        botonCerrar.innerHTML = '&times;'; // Símbolo de X
+        botonCerrar.innerHTML = '&times;';
         botonCerrar.onclick = function() {
             modal.classList.add('hidden');
         };
 
-        // Botón para volver a la pregunta
         const botonVolver = document.createElement('button');
         botonVolver.type = 'button';
         botonVolver.className = 'mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none';
@@ -701,16 +716,11 @@ function abrirImagenEnModal(url) {
         contenido.appendChild(botonCerrar);
         contenido.appendChild(botonVolver);
         modal.appendChild(contenido);
-
-        // Añadir la modal al body
         document.body.appendChild(modal);
     }
 
-    // Actualizar la fuente de la imagen en la modal
     const imgModal = document.getElementById('imagen-modal-src');
     imgModal.src = url;
-
-    // Mostrar la modal
     modal.classList.remove('hidden');
 }
 
@@ -724,6 +734,8 @@ function showResults() {
     resultElement.innerHTML = `
         <h2 class="text-2xl font-bold text-gray-800 mb-4">¡Test completado!</h2>
         <p class="text-lg text-gray-700">Has acertado <span class="font-bold">${score}</span> de <span class="font-bold">${preguntas.length}</span> preguntas.</p>
+        <p class="text-lg text-gray-700 mt-2">Correctas: <span class="text-green-600 font-bold">${correctAnswers}</span> ✓ | 
+        Incorrectas: <span class="text-red-600 font-bold">${incorrectAnswers}</span> ✗</p>
         <button class="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
                 onclick="restartQuiz()">
             Volver a empezar
@@ -734,31 +746,18 @@ function showResults() {
 function restartQuiz() {
     currentQuestion = 0;
     score = 0;
-    correctAnswers = 0;  // Nueva línea
-    incorrectAnswers = 0;  // Nueva línea
+    correctAnswers = 0;
+    incorrectAnswers = 0;
+    
+    shuffleArray(preguntas);
+    
     document.getElementById("quiz-container").classList.remove("hidden");
     document.getElementById("result-container").classList.add("hidden");
+    document.getElementById("cover-page").classList.add("hidden");
+    document.getElementById("quiz-section").classList.remove("hidden");
+    
     displayQuestion();
 }
-//barra de progreso
-function updateProgress() {
-    const totalCount = preguntas.length;
-    const progressCount = currentQuestion;
-    const progressPercentage = Math.round((progressCount / totalCount) * 100);
-    
-    document.getElementById('progress-count').textContent = progressCount;
-    document.getElementById('total-count').textContent = totalCount;
-    document.getElementById('correct-count').textContent = correctAnswers;
-    document.getElementById('incorrect-count').textContent = incorrectAnswers;
-    
-    const progressBar = document.getElementById('progress-bar');
-    progressBar.style.width = `${progressPercentage}%`;
-}
-// Variables globales
-let currentQuestion = 0;
-let score = 0;
-let correctAnswers = 0;  // Nuevas variables
-let incorrectAnswers = 0;
 
 // --- FIN DEL SCRIPT ---
 

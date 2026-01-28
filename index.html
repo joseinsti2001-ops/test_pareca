@@ -34,7 +34,11 @@
         </footer>
     </div>
         <!-- Barra de progreso y estadísticas -->
-    <div id="progress-section" class="w-full mb-6">
+   <div id="quiz-container" class="max-w-2xl mx-auto">
+    <!-- Aquí va el contenido de las preguntas -->
+    
+    <!-- BARRA DE PROGRESO AL FINAL -->
+    <div id="progress-section" class="w-full mt-6 pt-4 border-t border-gray-200">
         <div class="flex justify-between items-center mb-2">
             <span class="text-sm font-medium text-gray-700">
                 <span id="progress-count">0</span>/<span id="total-count">0</span> preguntas
@@ -44,10 +48,11 @@
                 <span class="text-red-600 font-bold" id="incorrect-count">0</span> ✗
             </span>
         </div>
-        <div class="w-full bg-gray-200 rounded-full h-3">
-            <div id="progress-bar" class="bg-blue-600 h-3 rounded-full transition-all duration-500" style="width: 0%"></div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+            <div id="progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
         </div>
     </div>
+</div>
     <!-- Sección del Quiz (oculta inicialmente) -->
     <div id="quiz-section" class="hidden">
         <div class="container mx-auto px-4 py-8 max-w-4xl">
@@ -74,4 +79,5 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+
 

@@ -562,6 +562,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // --- Funciones del Quiz ---
 function displayQuestion() {
+    updateProgress();
     const quizElement = document.getElementById("quiz-container");
     const q = preguntas[currentQuestion];
 
@@ -603,7 +604,12 @@ function checkAnswer(buttonElement) {
     const selectedOption = buttonElement.getAttribute("data-option");
     const q = preguntas[currentQuestion];
     const isCorrect = selectedOption === q.respuesta;
-
+     if (isCorrect) {
+        score++;
+        correctAnswers++;  // Nueva línea
+    } else {
+        incorrectAnswers++;  // Nueva línea
+    }
     // Deshabilitar todos los botones después de responder
     const allButtons = document.querySelectorAll('.option-btn');
     allButtons.forEach(btn => {
@@ -710,16 +716,34 @@ function showResults() {
 function restartQuiz() {
     currentQuestion = 0;
     score = 0;
+    correctAnswers = 0;  // Nueva línea
+    incorrectAnswers = 0;  // Nueva línea
     document.getElementById("quiz-container").classList.remove("hidden");
     document.getElementById("result-container").classList.add("hidden");
     displayQuestion();
 }
-
+//barra de progreso
+function updateProgress() {
+    const totalCount = preguntas.length;
+    const progressCount = currentQuestion;
+    const progressPercentage = Math.round((progressCount / totalCount) * 100);
+    
+    document.getElementById('progress-count').textContent = progressCount;
+    document.getElementById('total-count').textContent = totalCount;
+    document.getElementById('correct-count').textContent = correctAnswers;
+    document.getElementById('incorrect-count').textContent = incorrectAnswers;
+    
+    const progressBar = document.getElementById('progress-bar');
+    progressBar.style.width = `${progressPercentage}%`;
+}
 // Variables globales
 let currentQuestion = 0;
 let score = 0;
+let correctAnswers = 0;  // Nuevas variables
+let incorrectAnswers = 0;
 
 // --- FIN DEL SCRIPT ---
+
 
 
 

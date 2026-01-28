@@ -531,7 +531,127 @@ const preguntas = [
         respuesta: "E-3 Sentry",
         opciones: ["P-3 Orion", "C-130 Hercules", "E-3 Sentry", "A400M Atlas"],
         imagen: "imagenes/E-3-SENTRY.jpg" // Ruta local
-    }
+    },
+    {
+    descripcion: "Una hélice en el morro. Forma de avioneta pequeña. Ala alta recta.",
+    respuesta: "ORLAN 10",
+    opciones: ["FORPOST", "ORLAN 10", "PCHELA", "BAYRAKTAR TB2"],
+    imagen: "imagenes/ORLAN-10.jpg"
+},
+{
+    descripcion: "Joroba en el morro. Doble hélice. Cola inclinada hacia atrás.",
+    respuesta: "ALTIUS-U",
+    opciones: ["S-70", "ALTIUS-U", "HERMES 900", "RQ-4 GLOBAL HAWK"],
+    imagen: "imagenes/ALTIUS-U.jpg"
+},
+{
+    descripcion: "Parece un proyectil HEAT. Alas rectas plegables. Diseño kamikaze.",
+    respuesta: "SWITCHBLADE",
+    opciones: ["ZALA LANCET", "SWITCHBLADE", "SHAHED 136", "KUB-BLA"],
+    imagen: "imagenes/SWITCHBLADE.jpg"
+},
+{
+    descripcion: "Cola en forma de 'V' invertida. Morro alargado con sensor. Motor trasero.",
+    respuesta: "MQ-1 PREDATOR",
+    opciones: ["MQ-9 REAPER", "RQ-170 SENTINEL", "MQ-1 PREDATOR", "HERON"],
+    imagen: "imagenes/MQ-1-PREDATOR.jpg"
+},
+{
+    descripcion: "Cola en forma de 'V'. Morro con sensor esférico prominente. Fuselaje alargado.",
+    respuesta: "MQ-9 REAPER",
+    opciones: ["MQ-1 PREDATOR", "MQ-9 REAPER", "RQ-4 GLOBAL HAWK", "HERMES 900"],
+    imagen: "imagenes/MQ-9-REAPER.jpg"
+},
+{
+    descripcion: "Joroba en el morro con sensor. Motor a reacción en el centro del fuselaje. Alas finas y muy largas.",
+    respuesta: "RQ-4 GLOBAL HAWK",
+    opciones: ["RQ-170 SENTINEL", "RQ-4 GLOBAL HAWK", "HERON", "SEARCHER MKIII"],
+    imagen: "imagenes/RQ-4-GLOBAL-HAWK.jpg"
+},
+{
+    descripcion: "Antena prominente en el morro. Doble cola vertical. Fuselaje muy anguloso.",
+    respuesta: "SEARCHER MKIII",
+    opciones: ["HERMES 900", "FORPOST", "SEARCHER MKIII", "RQ-21 BLACKJACK"],
+    imagen: "imagenes/SEARCHER-MKIII.jpg"
+},
+{
+    descripcion: "Morro aerodinámico con cámara. Ala en delta. Patines de aterrizaje.",
+    respuesta: "BAYRAKTAR TB2",
+    opciones: ["WING LOONG", "BAYRAKTAR TB2", "CHINA CHENGDU", "HERON"],
+    imagen: "imagenes/BAYRAKTAR-TB2.jpg"
+},
+{
+    descripcion: "Morro con sensor esférico. Cola triangular. Fuselaje alargado con alas rectas.",
+    respuesta: "HERMES 900",
+    opciones: ["HERMES 450", "HERMES 900", "FORPOST", "RQ-7 SHADOW"],
+    imagen: "imagenes/HERMES-900.jpg"
+},
+{
+    descripcion: "Ala en flecha pronunciada. Sin cola visible. Diseño furtivo tipo ala volante.",
+    respuesta: "RQ-170 SENTINEL",
+    opciones: ["B-2 SPIRIT", "RQ-170 SENTINEL", "X-47B", "RQ-4 GLOBAL HAWK"],
+    imagen: "imagenes/RQ-170-SENTINEL.jpg"
+},
+{
+    descripcion: "Ala alta recta. Fuselaje tubular. Cola convencional con estabilizador vertical único.",
+    respuesta: "RQ-7 SHADOW",
+    opciones: ["SCAN EAGLE", "RQ-7 SHADOW", "RQ-11 RAVEN", "AEROVIRONMENT PUMA"],
+    imagen: "imagenes/RQ-7-SHADOW.jpg"
+},
+{
+    descripcion: "Diseño compacto con alas rectas. Cuerpo cilíndrico. Usado para reconocimiento táctico.",
+    respuesta: "MQ-27 SCAN EAGLE",
+    opciones: ["RQ-11 RAVEN", "MQ-27 SCAN EAGLE", "RQ-20 PUMA", "AEROVIRONMENT WING"],
+    imagen: "imagenes/MQ-27-SCAN-EAGLE.jpg"
+},
+{
+    descripcion: "Alas en delta. Fuselaje alargado. Motor trasero con hélice propulsora.",
+    respuesta: "RQ-21 BLACKJACK",
+    opciones: ["RQ-7 SHADOW", "RQ-21 BLACKJACK", "SCAN EAGLE", "AEROVIRONMENT PUMA"],
+    imagen: "imagenes/RQ-21-BLACKJACK.jpg"
+},
+{
+    descripcion: "Diseño kamikaze. Fuselaje alargado con alas en delta. Cabeza explosiva visible.",
+    respuesta: "SHAHED 136",
+    opciones: ["ZALA LANCET", "SHAHED 136", "SWITCHBLADE", "KUB-BLA"],
+    imagen: "imagenes/SHAHED-136.jpg"
+},
+{
+    descripcion: "Pequeño UAV táctico. Fuselaje compacto con alas rectas. Lanzado manualmente.",
+    respuesta: "AEROVIRONMENT PUMA",
+    opciones: ["RQ-11 RAVEN", "AEROVIRONMENT PUMA", "WASP III", "RQ-20"],
+    imagen: "imagenes/AEROVIRONMENT-PUMA.jpg"
+},
+{
+    descripcion: "Ala alta con patines. Fuselaje alargado. Motor con hélice tractora en morro.",
+    respuesta: "FORPOST",
+    opciones: ["ORLAN 10", "PCHELA", "FORPOST", "GRANAT"],
+    imagen: "imagenes/FORPOST.jpg"
+},
+{
+    descripcion: "Diseño kamikaze compacto. Fuselaje con alas en cruz. Cuerpo cilíndrico.",
+    respuesta: "ZALA LANCET",
+    opciones: ["KUB-BLA", "ZALA LANCET", "SHAHED 136", "SWITCHBLADE"],
+    imagen: "imagenes/ZALA-LANCET.jpg"
+},
+{
+    descripcion: "Ala alta recta. Fuselaje tubular con morro redondeado. Cola convencional.",
+    respuesta: "PCHELA",
+    opciones: ["FORPOST", "GRANAT", "PCHELA", "ORLAN 10"],
+    imagen: "imagenes/PCHELA.jpg"
+},
+{
+    descripcion: "Ala en delta grande. Fuselaje corto con morro redondeado. Motor trasero.",
+    respuesta: "HERON",
+    opciones: ["HERMES 450", "BAYRAKTAR TB2", "HERON", "WING LOONG"],
+    imagen: "imagenes/HERON.jpg"
+},
+{
+    descripcion: "Diseño furtivo con alas en delta. Motor a reacción. Sin cola vertical visible.",
+    respuesta: "S-70",
+    opciones: ["RQ-170 SENTINEL", "S-70", "X-47B", "RQ-180"],
+    imagen: "imagenes/S-70.jpg"
+}
     // Añade más entradas aquí si tienes más imágenes descargadas
 ];
 
@@ -760,6 +880,7 @@ function restartQuiz() {
 }
 
 // --- FIN DEL SCRIPT ---
+
 
 
 
